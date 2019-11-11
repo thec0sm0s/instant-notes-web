@@ -21,15 +21,11 @@ export default class App extends Component {
         }
     }
 
-    getNote() {
-
-    }
-
   render() {
     return (
       <div>
-        <Header />
-          {this.state.isLoggedIn ? <Main /> : <Login parent={this} />}
+        <Header parent={this} />
+          {this.state.isLoggedIn ? <Main parent={this} /> : <Login parent={this} />}
       </div>
     )
   }

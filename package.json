@@ -8,11 +8,13 @@
     "@material/react-material-icon": "^0.15.0",
     "@material/react-text-field": "^0.15.0",
     "@material/react-top-app-bar": "^0.15.0",
+    "@material/react-typography": "^0.15.0",
     "autosize": "^4.0.2",
     "axios": "^0.19.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-typography": "^0.16.19"
   },
   "scripts": {
     "start": "react-scripts start",

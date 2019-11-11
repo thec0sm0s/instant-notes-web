@@ -24,28 +24,18 @@ class Login extends Component {
     }
 
     login() {
-        // axios({
-        //     method: "post",
-        //     url: this.props.parent.baseURL + "/api/",
-        //     data: payload
-        // }).then(response => {
-        //     console.log(response)
-        // }).catch(error => {
-        //     console.log(error)
-        // })
-        let payload = {
-            username: this.props.parent.username,
-            password: this.props.parent.password
-        }
-        fetch(this.props.parent.baseURL + "/api/", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: this.props.parent.username,
-                password: this.props.parent.password
-            })
+        axios.post(this.props.parent.baseURL + "/api/", {
+            username: this.props.parent.state.username,
+            password: this.props.parent.state.password
+        }).then(response => {
+            if (response.status === 200) {
+                this.props.parent.setState(prevState => {
+                    prevState.isLoggedIn = true
+                    return prevState
+                })
+            }
+        }).catch(error => {
+            console.log(error)
         })
     }
 

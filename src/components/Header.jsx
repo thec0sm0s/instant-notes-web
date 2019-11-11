@@ -6,7 +6,6 @@ import TopAppBar, {
     TopAppBarTitle,
 } from "@material/react-top-app-bar";
 import MaterialIcon from '@material/react-material-icon'
-
 import '@material/react-top-app-bar/dist/top-app-bar.css'
 
 
@@ -17,11 +16,16 @@ export default class Header extends Component {
                 <TopAppBar fixed={true}>
                     <TopAppBarRow>
                         <TopAppBarSection>
-                        <TopAppBarIcon navIcon tabIndex={0}>
-                            <MaterialIcon hasRipple icon='notes' />
-                        </TopAppBarIcon>
+                            <TopAppBarIcon navIcon tabIndex={0}>
+                                <MaterialIcon hasRipple icon='notes' />
+                            </TopAppBarIcon>
                             <TopAppBarTitle>Instant Notes</TopAppBarTitle>
                         </TopAppBarSection>
+                        {this.props.parent.state.isLoggedIn ?
+                            <TopAppBarSection>
+                                <div className="header-username">{this.props.parent.state.username}</div>
+                            </TopAppBarSection> : ""}
+
                     </TopAppBarRow>
                 </TopAppBar>
             </div>

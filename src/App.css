@@ -55,3 +55,14 @@ body {
 .login-component > button {
     margin-top: 34px;
 }
+
+.header-username {
+    width: 100%;
+    margin-right: 24px;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-close-icon {
+
+}
