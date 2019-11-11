@@ -4,15 +4,15 @@ import MaterialIcon from "@material/react-material-icon"
 
 class Main extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            note: "My note"
+            note: ""
         }
     }
 
     componentDidMount() {
-        // Get note.
+
     }
 
     render() {
@@ -21,7 +21,7 @@ class Main extends Component {
                 <label>
                     <div className="content">
                         <MaterialIcon icon="arrow_forward_ios" />
-                        <textarea className="content-input" />
+                        <textarea className="content-input" value={this.state.note} onChange={e => this.setState({note: e.currentTarget.value})} />
                     </div>
                 </label>
             </div>
