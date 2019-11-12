@@ -62,17 +62,19 @@ class Main extends Component {
 
     render() {
         return (
-            <div className="container">
-                <label>
-                    <div className="content">
-                        <MaterialIcon icon="arrow_forward_ios" />
-                        <textarea ref={this.textArea} className="content-input" value={this.state.note} onChange={e => this.handleChange(e.currentTarget)} />
-                    </div>
-                </label>
-                {this.state.didSomethingWentWrong ? <Snackbar message="Sorry, something went wrong saving your note." onClose={prevState => {
-                    prevState.didSomethingWentWrong = false
-                    return prevState
-                }} /> : ""}
+            <div>
+                <div className="container">
+                    <label>
+                        <div className="content">
+                            <MaterialIcon icon="arrow_forward_ios" />
+                            <textarea ref={this.textArea} className="content-input" value={this.state.note} onChange={e => this.handleChange(e.currentTarget)} />
+                        </div>
+                    </label>
+                    {this.state.didSomethingWentWrong ? <Snackbar message="Sorry, something went wrong saving your note." onClose={prevState => {
+                        prevState.didSomethingWentWrong = false
+                        return prevState
+                    }} /> : ""}
+                </div>
             </div>
         );
     }

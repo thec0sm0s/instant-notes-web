@@ -5,8 +5,10 @@ import MaterialIcon from "@material/react-material-icon"
 import TextField, {Input} from '@material/react-text-field'
 import {Snackbar} from "@material/react-snackbar";
 import {Button} from "@material/react-button";
+import IconButton, {IconToggle} from "@material/react-icon-button";
 
 import '@material/react-snackbar/dist/snackbar.css';
+import '@material/react-icon-button/dist/icon-button.css';
 import '@material/react-button/dist/button.css';
 
 
@@ -74,7 +76,7 @@ class Login extends Component {
             <div className="login-component">
                 <MaterialIcon icon="account_circle" />
                 <TextField label='Username'><Input name="username" id="username" value={this.props.parent.state.username} onChange={(e) => this.handleChange(e.currentTarget)} /></TextField>
-                <TextField label='Password' trailingIcon={<MaterialIcon icon="remove_red_eye" />} onTrailingIconSelect={() => this.setState(prevstate => {
+                <TextField label='Password' trailingIcon={<IconButton style={{top: "4px"}}><MaterialIcon icon="remove_red_eye" /></IconButton>} onTrailingIconSelect={() => this.setState(prevstate => {
                     prevstate.showPassword = !prevstate.showPassword
                     return prevstate
                 })}><Input name="password" type={this.state.showPassword ? "text" : "password"} id="password" value={this.props.parent.state.password} onChange={(e) => this.handleChange(e.currentTarget)} /></TextField>
