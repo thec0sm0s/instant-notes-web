@@ -6,7 +6,10 @@ import TopAppBar, {
     TopAppBarTitle,
 } from "@material/react-top-app-bar";
 import MaterialIcon from '@material/react-material-icon'
+import LinearProgress from "@material/react-linear-progress";
+
 import '@material/react-top-app-bar/dist/top-app-bar.css'
+import '@material/react-linear-progress/dist/linear-progress.css';
 
 
 export default class Header extends Component {
@@ -25,8 +28,8 @@ export default class Header extends Component {
                             <TopAppBarSection>
                                 <div className="header-username">{this.props.parent.state.username}</div>
                             </TopAppBarSection> : ""}
-
                     </TopAppBarRow>
+                    <LinearProgress indeterminate closed={!this.props.parent.state.isLoading} />
                 </TopAppBar>
             </div>
         )

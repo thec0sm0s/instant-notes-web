@@ -10,7 +10,7 @@ import Login from "./components/Login";
 
 export default class App extends Component {
 
-    baseURL = "http://127.0.0.1:5000"
+    baseURL = "https://instant-notes.herokuapp.com"
 
     constructor() {
         super()
@@ -18,7 +18,22 @@ export default class App extends Component {
             username: "",
             password: "",
             isLoggedIn: false,
+            isLoading: false,
         }
+    }
+
+    startLoading() {
+        this.setState(prevState => {
+            prevState.isLoading = true
+            return prevState
+        })
+    }
+
+    stopLoading() {
+        this.setState(prevState => {
+            prevState.isLoading = false
+            return prevState
+        })
     }
 
   render() {
