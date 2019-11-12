@@ -5,7 +5,7 @@ import MaterialIcon from "@material/react-material-icon"
 import TextField, {Input} from '@material/react-text-field'
 import {Snackbar} from "@material/react-snackbar";
 import {Button} from "@material/react-button";
-import IconButton, {IconToggle} from "@material/react-icon-button";
+import IconButton from "@material/react-icon-button";
 
 import '@material/react-snackbar/dist/snackbar.css';
 import '@material/react-icon-button/dist/icon-button.css';

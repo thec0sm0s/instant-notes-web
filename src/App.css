@@ -56,16 +56,20 @@ body {
     margin-top: 34px;
 }
 
-.header-username, .share-icon {
+.header-username {
     width: 100%;
     margin-right: 24px;
     text-align: right;
     font-family: 'Roboto', sans-serif;
 }
 
-/*.share-icon {*/
-/*    position: sticky;*/
-/*    bottom: 70px;*/
-/*    margin-right: 70px;*/
-/*    text-align: right;*/
-/*}*/
+.fab {
+    position: sticky;
+    bottom: 70px;
+    text-align: right;
+    margin-right: 70px;
+}
+
+.fab > button {
+    background-color: #e91e63;
+}
