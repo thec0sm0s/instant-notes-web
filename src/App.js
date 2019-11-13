@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Login from "./components/Login";
 import Shared from "./components/Shared";
+import axios from "axios";
 
 
 
@@ -23,6 +24,10 @@ export default class App extends Component {
         }
     }
 
+    componentDidMount() {
+        this.trySessionLogin()
+    }
+
     startLoading() {
         this.setState(prevState => {
             prevState.isLoading = true
@@ -34,6 +39,24 @@ export default class App extends Component {
         this.setState(prevState => {
             prevState.isLoading = false
             return prevState
+        })
+    }
+
+    trySessionLogin() {
+        this.startLoading()
+        axios.get(this.baseURL + "/api/").then(response => {
+            if (response.status === 200) {
+                this.setState(prevState => {
+                    prevState.username = response.data.username
+                    prevState.password = response.data.password
+                    prevState.isLoggedIn = true
+                    prevState.isLoading = false
+                    return prevState
+                })
+            }
+        }).catch(error => {
+            // Normal login flow.
+            this.stopLoading()
         })
     }
 
