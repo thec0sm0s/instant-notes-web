@@ -65,9 +65,9 @@ body {
 
 .fab {
     position: sticky;
-    bottom: 70px;
     text-align: right;
-    margin-right: 70px;
+    bottom: 1em;
+    margin-right: 1em;
 }
 
 .fab > button {
