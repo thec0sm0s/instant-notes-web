@@ -53,17 +53,18 @@ export default class App extends Component {
                     prevState.password = response.data.password
                     prevState.isLoggedIn = true
                     prevState.isLoading = false
+                    prevState.hasPageLoaded = true
                     return prevState
                 })
             }
         }).catch(error => {
             // Normal login flow.
             this.stopLoading()
+            this.setState(prevState => {
+                prevState.hasPageLoaded = true
+                return prevState
+            })
         })
-        this.setState(prevState =>{
-            prevState.hasPageLoaded = true
-            return prevState
-        }) //TODO: it will run insta since async.
     }
 
     doSessionLogout() {
