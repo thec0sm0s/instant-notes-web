@@ -15,8 +15,10 @@ class Main extends Component {
         this.state = {
             note: "",
             didSomethingWentWrong: false,
-            shared: false
+            shared: false,
+            isSaving: false
         }
+        this.textCache = ""
         this.textArea = React.createRef()
         this.handleChange = this.handleChange.bind(this)
         this.shareNote = this.shareNote.bind(this)
@@ -30,7 +32,10 @@ class Main extends Component {
             password: this.props.parent.state.password
         }).then(response => {
             if (response.status === 200) {
-                this.setState({note: response.data.note})
+                this.setState(prevState => {
+                    prevState.note = response.data.note
+                    return prevState
+                })
                 this.props.parent.stopLoading()
             }
         }).catch(error => {
@@ -86,7 +91,10 @@ class Main extends Component {
     }
 
     handleChange(currentTarget) {
-        this.setState({note: currentTarget.value})
+        this.setState(prevState => {
+            prevState.note = currentTarget.value
+            return prevState
+        })
         this.saveNote()
     }
 
