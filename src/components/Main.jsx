@@ -18,7 +18,6 @@ class Main extends Component {
             shared: false,
             isSaving: false
         }
-        this.textCache = ""
         this.textArea = React.createRef()
         this.handleChange = this.handleChange.bind(this)
         this.shareNote = this.shareNote.bind(this)
@@ -46,6 +45,10 @@ class Main extends Component {
 
     saveNote() {
         this.props.parent.startLoading()
+        this.setState(prevState => {
+            prevState.isSaving = true
+            return prevState
+        })
         axios.post(this.props.parent.baseURL + "/api/", {
             username: this.props.parent.state.username,
             password: this.props.parent.state.password,
@@ -53,12 +56,17 @@ class Main extends Component {
         }).then(response => {
             if (response.status === 200) {
                 this.props.parent.stopLoading()
+                this.setState(prevState => {
+                    prevState.isSaving = false
+                    return prevState
+                })
                 // Sync.
             }
         }).catch(error => {
             console.log(error)
             this.setState(prevState => {
                 prevState.didSomethingWentWrong = true
+                prevState.isSaving = false
                 return prevState
             })
             this.props.parent.stopLoading()
@@ -95,7 +103,9 @@ class Main extends Component {
             prevState.note = currentTarget.value
             return prevState
         })
-        this.saveNote()
+        if (!this.state.isSaving) {
+            this.saveNote()
+        }
     }
 
     render() {
