@@ -23,6 +23,7 @@ export default class App extends Component {
             isLoading: false,
             hasPageLoaded: false,
         }
+        this.doSessionLogout = this.doSessionLogout.bind(this)
     }
 
     componentDidMount() {
@@ -62,6 +63,23 @@ export default class App extends Component {
         this.setState(prevState =>{
             prevState.hasPageLoaded = true
             return prevState
+        }) //TODO: it will run insta since async.
+    }
+
+    doSessionLogout() {
+        this.startLoading()
+        axios.delete(this.baseURL + "/api/revoke/").then(response => {
+            if (response.status === 200) {
+                this.setState(prevState => {
+                    prevState.username = ""
+                    prevState.password = ""
+                    prevState.isLoggedIn = false
+                    prevState.isLoading = false
+                    return prevState
+                })
+            }
+        }).catch(error => {
+            this.stopLoading()
         })
     }
 
