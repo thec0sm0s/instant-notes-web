@@ -21,6 +21,7 @@ export default class App extends Component {
             password: "",
             isLoggedIn: false,
             isLoading: false,
+            hasPageLoaded: false,
         }
     }
 
@@ -58,6 +59,10 @@ export default class App extends Component {
             // Normal login flow.
             this.stopLoading()
         })
+        this.setState(prevState =>{
+            prevState.hasPageLoaded = true
+            return prevState
+        })
     }
 
   render() {
@@ -65,7 +70,8 @@ export default class App extends Component {
       <div>
         <Header parent={this} />
           {window.sharedPayload ? <Shared/> :
-              this.state.isLoggedIn ? <Main parent={this}/> : <Login parent={this}/>
+              this.state.hasPageLoaded ?
+                this.state.isLoggedIn ? <Main parent={this}/> : <Login parent={this}/> : ""
           }
       </div>
     )
