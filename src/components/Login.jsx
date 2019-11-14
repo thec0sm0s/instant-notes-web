@@ -57,6 +57,8 @@ class Login extends Component {
                     prevState.isLoading = false
                     return prevState
                 })
+                localStorage.setItem("username", this.props.parent.state.username)
+                localStorage.setItem("password", this.props.parent.state.password)
             }
         }).catch(error => {
             if (error.response.status === 401) {

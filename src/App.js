@@ -59,9 +59,18 @@ export default class App extends Component {
             }
         }).catch(error => {
             // Normal login flow.
+            let username = localStorage.getItem("username")
+            let password = localStorage.getItem("password")
+            username && password ? this.setState(prevState => {
+                prevState.username = username
+                prevState.password = password
+                prevState.isLoggedIn = true
+                return prevState
+                }) : // pass
             this.stopLoading()
             this.setState(prevState => {
                 prevState.hasPageLoaded = true
+                prevState.isLoading = false
                 return prevState
             })
         })
