@@ -78,6 +78,7 @@ export default class App extends Component {
 
     doSessionLogout() {
         this.startLoading()
+        localStorage.clear()
         axios.delete(this.baseURL + "/api/revoke/").then(response => {
             if (response.status === 200) {
                 this.setState(prevState => {
