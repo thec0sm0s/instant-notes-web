@@ -12,7 +12,7 @@ import axios from "axios";
 
 export default class App extends Component {
 
-    baseURL = "https://instant-notes.herokuapp.com"
+    baseURL = "https://cosmos.the-be.st"
 
     constructor() {
         super()
